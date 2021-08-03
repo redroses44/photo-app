@@ -1,0 +1,29 @@
+<div>
+  <button class="btn btn-info mr-2" (click)="goBack()">Back</button>
+  <button (click)="openModal()" class="btn btn-primary my-2">
+    {{ !modalOpened ? "Add image" : "Close" }}
+  </button>
+  <div *ngIf="modalOpened">
+    <input
+      class="form-control"
+      name="url"
+      [(ngModel)]="url"
+      placeholder="url"
+    />
+    <button class="btn btn-success mt-2" (click)="addImage()">Add</button>
+  </div>
+  <div class="row">
+    <div
+      *ngFor="let photo of photos"
+      class="col-lg-2 col-md-3 col-sm-4 col-6 my-2"
+    >
+      <img class="img" [src]="photo.thumbnailUrl" alt="photo.title" />
+      <button
+        class="btn btn-danger mt-1 text-center"
+        (click)="removeImage(photo.id)"
+      >
+        Remove
+      </button>
+    </div>
+  </div>
+</div>

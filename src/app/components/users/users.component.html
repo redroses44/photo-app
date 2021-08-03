@@ -1,0 +1,26 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{ user.name }}
+      </td>
+      <td>
+        {{ user.address.street }}, {{ user.address.suite }},
+        {{ user.address.city }}
+      </td>
+      <td>
+        <a (click)="setUser(user)" [routerLink]="['/albums', user.id]"
+          >See More</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

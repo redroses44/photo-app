@@ -1,0 +1,16 @@
+<div class="my-3 d-flex justify-content-between align-items-center">
+  <button (click)="toggleShow()" class="btn btn-primary">
+    {{ shouldShow ? "Close user interactions" : "Open user interactions" }}
+  </button>
+  <ul class="pl-0 mt-2 m-0">
+    <p>Albums - (created:{{ albumsCreated }}, removed:{{ albumsRemoved }})</p>
+    <p>Photos - (created:{{ photosCreated }}, removed:{{ photosRemoved }})</p>
+  </ul>
+</div>
+<div *ngIf="shouldShow" class="accordion my-2" id="accordionExample">
+  <p *ngIf="!interactions.length">No interactions yet</p>
+  <div *ngFor="let interaction of interactions" class="accordion-item">
+    {{ interaction.type.toLowerCase() }} by user -
+    {{ interaction.userData?.name }}
+  </div>
+</div>
