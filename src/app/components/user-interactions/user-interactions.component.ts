@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { UserInteraction } from 'src/app/interfaces/UserInteraction';
+import { ClearInteractionAction } from 'src/app/store/actions/user-interaction.action';
 import { AppState } from 'src/app/store/app-state';
 import {
   getUserInteractions,
@@ -44,6 +45,10 @@ export class UserInteractionsComponent implements OnInit {
       .subscribe((count) => {
         this.photosRemoved = count;
       });
+  }
+
+  clearInteractions() {
+    this.store.dispatch(new ClearInteractionAction());
   }
 
   toggleShow() {
